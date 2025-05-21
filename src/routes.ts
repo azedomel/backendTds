@@ -10,8 +10,8 @@ routes.get("/", (req: Request, res: Response) : any => {
 
 //rota que retorna uma lista nomeada "items"
 
-routes.get("/funcionarios", (req: Request, _res: Response) : any => {
-    return Response.json({
+routes.get("/funcionarios", (req: Request, res: Response) : any => {
+    return res.json({
         items: [
             {
                 id: "1",
@@ -40,5 +40,9 @@ routes.get("/funcionarios", (req: Request, _res: Response) : any => {
 })
 
 routes.post("/users", (req: Request, res:Response) : any => userController.create(req,res))
+routes.get("/users", (req: Request, res:Response) : any => userController.read(req,res))
+routes.put("/users/:id", (req: Request, res:Response) : any => userController.update(req,res))
+routes.delete("/users/:id", (req: Request, res:Response) : any => userController.delete(req,res))
+routes.post("/login", (req: Request, res:Response) : any => userController.create(req,res))
 
 export default routes
